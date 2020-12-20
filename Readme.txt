@@ -1,6 +1,1 @@
-Thanks for downloading this template!
-
-Template Name: BizPage
-Template URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+We excel at providing you with the best software developers, UI/UX designers, managers, and QA engineers. These are some of the roles that you can access by hiring our Staff Augmentation services. The main benefits include lower costs, improving speed, and efficiency.
