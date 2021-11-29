@@ -195,6 +195,8 @@
   // Clients carousel (uses the Owl Carousel library)
   $(".clients-carousel").owlCarousel({
     autoplay: true,
+    autoplayTimeout: 20000,
+    autoplayHoverPause: true,
     dots: true,
     loop: true,
     responsive: {
@@ -213,6 +215,8 @@
   // Testimonials carousel (uses the Owl Carousel library)
   $(".testimonials-carousel").owlCarousel({
     autoplay: true,
+    autoplayTimeout: 20000,
+    autoplayHoverPause: true,
     dots: true,
     loop: true,
     items: 1
@@ -221,6 +225,8 @@
   // Portfolio details carousel
   $(".portfolio-details-carousel").owlCarousel({
     autoplay: true,
+    autoplayTimeout: 20000,
+    autoplayHoverPause: true,
     dots: true,
     loop: true,
     items: 1
