@@ -1,14 +1,14 @@
 {
-    "name": "Booster\u00a0Software",
-    "short_name": "Booster\u00a0Software",
+    "name": "Booster Software",
+    "short_name": "Booster Software",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png?v=1",
+            "src": "/android-chrome-192x192.png?v=3",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-512x512.png?v=1",
+            "src": "/android-chrome-512x512.png?v=3",
             "sizes": "512x512",
             "type": "image/png"
         }
