@@ -104,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .language-flag {
-  max-width: 35px;
+  max-height: 18px;
   max-width: auto;
   filter: grayscale(75%);
 }
