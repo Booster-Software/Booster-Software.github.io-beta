@@ -77,10 +77,10 @@
                     </h1>
 
                     <nav class="nav-menu d-none d-lg-block">
-                        <ul>
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#services">Services</a></li>
+                        <ul class="align-items-center">
+                            <li class="active"><a href="index.html" id="navMenuHome">Home</a></li>
+                            <li><a href="#about" id="navMenuAboutUs">About Us</a></li>
+                            <li><a href="#services" id="navMenuServices">Services</a></li>
                             <!-- <li class="drop-down"><a href="">Drop Down</a>
                                 <ul>
                                     <li><a href="#">Drop Down 1</a></li>
@@ -89,7 +89,11 @@
                                     <li><a href="#">Drop Down 5</a></li>
                                 </ul>
                             </li> -->
-                            <li><a href="#contact">Contact Us</a></li>
+                            <li><a href="#contact" id="navMenuContactUs">Contact Us</a></li>
+                            <li>
+                                <img src="./assets/img/country-flag/us.svg" class="language-flag" onclick="setLanguage('en')" id="languageFlagEN">
+                                <img src="./assets/img/country-flag/es.svg" class="language-flag" onclick="setLanguage('es')" id="languageFlagES">
+                            </li>
                         </ul>
                     </nav><!-- .nav-menu -->
                 </div>
@@ -105,29 +109,29 @@
                     <div class="carousel-item active" style="background-image: url(assets/img/intro-carousel/1.jpg)">
                         <div class="carousel-container">
                             <div class="container">
-                                <h2 class="animate__animated animate__fadeInDown">Coding success together</h2>
-                                <p class="animate__animated animate__fadeInUp">Staff augmentation services to ramp up your software development teams.</p>
-                                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                                <h2 class="animate__animated animate__fadeInDown" id="homeHeader1Text1">Coding success together</h2>
+                                <p class="animate__animated animate__fadeInUp" id="homeHeader1Text2">Staff augmentation services to ramp up your software development teams.</p>
+                                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp" id="homeButton1">Get Started</a>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item" style="background-image: url(assets/img/intro-carousel/2.jpg)">
                         <div class="carousel-container">
                             <div class="container">
-                                <h2 class="animate__animated animate__fadeInDown">We are professional</h2>
-                                <p class="animate__animated animate__fadeInUp">We excel at providing you with the best software developers, UI/UX designers, managers, and QA engineers. These are some of the roles that you can access by hiring our Staff Augmentation services. The main benefits include lower costs, improving speed, and efficiency.</p>
-                                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                                <h2 class="animate__animated animate__fadeInDown" id="homeHeader2Text1">We are professional</h2>
+                                <p class="animate__animated animate__fadeInUp" id="homeHeader2Text2">We excel at providing you with the best software developers, UI/UX designers, managers, and QA engineers. These are some of the roles that you can access by hiring our Staff Augmentation services. The main benefits include lower costs, improving speed, and efficiency.</p>
+                                <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp" id="homeButton2">Get Started</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only" id="homeCarouselPrevious">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
                     <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="sr-only" id="homeCarouselNext">Next</span>
                 </a>
             </div>
         </div>
@@ -139,18 +143,18 @@
                 <div class="row">
                     <div class="col-lg-4 box">
                         <i class="ion-ios-bookmarks-outline"></i>
-                        <h4 class="title"><a href="">Looking for a partner?</a></h4>
-                        <p class="description">No matter you need to craft the idea for a completely new product or evaluate the quality of an already existing one, we're here to help you measuring success by the duration of our long-term partnerships.</p>
+                        <h4 class="title" id="featuredServicesTitle1"><a href="">Looking for a partner?</a></h4>
+                        <p class="description" id="featuredServicesDescription1">No matter you need to craft the idea for a completely new product or evaluate the quality of an already existing one, we're here to help you measuring success by the duration of our long-term partnerships.</p>
                     </div>
                     <div class="col-lg-4 box">
                         <i class="ion-ios-heart-outline"></i>
-                        <h4 class="title"><a href="">Building bigger ideas Together</h4>
-                        <p class="description">Everyone working on your project is fully invested in its success. We care just as much about how your software looks and performs as we do about the problem that it's solving.</p>
+                        <h4 class="title" id="featuredServicesTitle2"><a href="">Building bigger ideas Together</h4>
+                        <p class="description" id="featuredServicesDescription2">Everyone working on your project is fully invested in its success. We care just as much about how your software looks and performs as we do about the problem that it's solving.</p>
                     </div>
                     <div class="col-lg-4 box box-bg">
                         <i class="ion-ios-stopwatch-outline"></i>
-                        <h4 class="title"><a href="">We're the whole package</a></h4>
-                        <p class="description">Not to brag about it, but we are pretty good at these.</p>
+                        <h4 class="title" id="featuredServicesTitle3"><a href="">We're the whole package</a></h4>
+                        <p class="description" id="featuredServicesDescription3">Not to brag about it, but we are pretty good at these.</p>
                     </div>
                 </div>
             </div>
@@ -159,8 +163,8 @@
         <section id="about">
             <div class="container" data-aos="fade-up">
                 <header class="section-header">
-                    <h3>About Us</h3>
-                    <p>Seamless collaboration, total transparency, secure delivery. We've developed a better approach to custom software development.</p>
+                    <h3 id="aboutUsTitle">About Us</h3>
+                    <p id="aboutUsDescription">Seamless collaboration, total transparency, secure delivery. We've developed a better approach to custom software development.</p>
                 </header>
                 <div class="row about-cols">
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
@@ -169,8 +173,8 @@
                                 <img src="assets/img/about-mission.jpg" alt="" class="img-fluid">
                                 <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
                             </div>
-                            <h2 class="title"><a href="#">Our Mission</a></h2>
-                            <p>
+                            <h2 class="title" id="aboutUsTitle1"><a href="#">Our Mission</a></h2>
+                            <p id="aboutUsDescription1">
                                 Our mission is to enhance business growth of our customers with creative design, development and to deliver market defining high quality solutions that create value and reliable competitive advantage to customers around the globe.
                             </p>
                         </div>
@@ -181,8 +185,8 @@
                                 <img src="assets/img/about-plan.jpg" alt="" class="img-fluid">
                                 <div class="icon"><i class="ion-ios-list-outline"></i></div>
                             </div>
-                            <h2 class="title"><a href="#">Our Plan</a></h2>
-                            <p>
+                            <h2 class="title"><a href="#" id="aboutUsTitle2">Our Plan</a></h2>
+                            <p id="aboutUsDescription2">
                                 We offer a phased approach towards your business drivers and help IT organizations to align their goals towards the overall vision of the business.
                             </p>
                         </div>
@@ -193,8 +197,8 @@
                                 <img src="assets/img/about-vision.jpg" alt="" class="img-fluid">
                                 <div class="icon"><i class="ion-ios-eye-outline"></i></div>
                             </div>
-                            <h2 class="title"><a href="#">Our Vision</a></h2>
-                            <p>
+                            <h2 class="title"><a href="#" id="aboutUsTitle3">Our Vision</a></h2>
+                            <p id="aboutUsDescription3">
                                 Our main objective is to constantly develop and become a leading player in this competitive global market. Fortunately, we have been able to assemble a team of professionals who can shape and shape their collective experiences, all of whom possess outstanding talent that can help accelerate your organization.
                             </p>
                         </div>
@@ -206,24 +210,24 @@
         <section id="services">
             <div class="container" data-aos="fade-up">
                 <header class="section-header wow fadeInUp">
-                    <h3>Services</h3>
-                    <p>We have quite some experience in the tech field, and we have been proven successful on it. We provide Staff Augmentation Services and software development according to your needs.</p>
+                    <h3 id="servicesTitle">Services</h3>
+                    <p id="servicesDescription">We have quite some experience in the tech field, and we have been proven successful on it. We provide Staff Augmentation Services and software development according to your needs.</p>
                 </header>
                 <div class="row">
                     <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="ion-ios-people-outline"></i></div>
-                        <h4 class="title"><a href="">STAFF AUGMENTATION</a></h4>
-                        <p class="description">Highly skilled professionals ready to join your team in order to accomplish your business goals: software developers, PM's, UX/UI designers and QA automation, all bilingual and with Senior profiles. Benefits? cost effective, cultural similarity, aligned time zone and more.</p>
+                        <h4 class="title" id="servicesTitle1"><a href="">STAFF AUGMENTATION</a></h4>
+                        <p class="description" id="servicesDescription1">Highly skilled professionals ready to join your team in order to accomplish your business goals: software developers, PM's, UX/UI designers and QA automation, all bilingual and with Senior profiles. Benefits? cost effective, cultural similarity, aligned time zone and more.</p>
                     </div>
                     <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="100">
                         <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
-                        <h4 class="title"><a href="">SOFTWARE DEVELOPMENT</a></h4>
-                        <p class="description">A highly-qualified team of committed professionals that develop through Agile methodologies. We focus on creating made-to-measure software to provide the right solution.Fluent communication, adaptability and flexibility describe us.</p>
+                        <h4 class="title" id="servicesTitle2"><a href="">SOFTWARE DEVELOPMENT</a></h4>
+                        <p class="description" id="servicesDescription2">A highly-qualified team of committed professionals that develop through Agile methodologies. We focus on creating made-to-measure software to provide the right solution.Fluent communication, adaptability and flexibility describe us.</p>
                     </div>
                     <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="300">
                         <div class="icon"><i class="ion-ios-paper-outline"></i></div>
-                        <h4 class="title"><a href="">APP DEVELOPMENT</a></h4>
-                        <p class="description">We design & develop feature-rich mobile apps.
+                        <h4 class="title" id="servicesTitle3"><a href="">APP DEVELOPMENT</a></h4>
+                        <p class="description" id="servicesDescription3">We design & develop feature-rich mobile apps.
                             Technology + Design + Innovation + Quality + Efficiency is the combination we choose to create highly-qualified mobile applications.
                             Solid Expertise on iOS and Android platforms.
                             Custom mobile application development (native, cross-platform and mobile web apps).
@@ -231,14 +235,14 @@
                     </div>
                     <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-                        <h4 class="title"><a href="">UI / UX DESIGN</a></h4>
-                        <p class="description">Design is not just what it looks like and feels like. Design is how it works. We solve very complicated problems without letting people know how complicated the problem was.
+                        <h4 class="title" id="servicesTitle4"><a href="">UI / UX DESIGN</a></h4>
+                        <p class="description" id="servicesDescription4">Design is not just what it looks like and feels like. Design is how it works. We solve very complicated problems without letting people know how complicated the problem was.
                         </p>
                     </div>
                     <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="ion-ios-lightbulb-outline"></i></div>
-                        <h4 class="title"><a href="">PRODUCT DISCOVERY</a></h4>
-                        <p class="description">We aim to build long lasting relationships with our clients as well, and position ourselves as much more than just a supplier, a technology partner.
+                        <h4 class="title" id="servicesTitle5"><a href="">PRODUCT DISCOVERY</a></h4>
+                        <p class="description" id="servicesDescription5">We aim to build long lasting relationships with our clients as well, and position ourselves as much more than just a supplier, a technology partner.
                         </p>
                     </div>
                     <!-- <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="300">
@@ -257,9 +261,9 @@
         <!-- ======= Call To Action Section ======= -->
         <section id="call-to-action">
             <div class="container text-center" data-aos="zoom-in">
-                <h3>Let's Work Together</h3>
-                <p> Get in touch to let us know what you're looking for and one of our solutions architects will get back to you soon.</p>
-                <a class="cta-btn" href="#contact">Contact Us</a>
+                <h3 id="letsWorkTogetherTitle">Let's Work Together</h3>
+                <p id="letsWorkTogetherDescription"> Get in touch to let us know what you're looking for and one of our solutions architects will get back to you soon.</p>
+                <a class="cta-btn" id="letsWorkTogetherCTA" href="#contact">Contact Us</a>
             </div>
         </section><!-- End Call To Action Section -->
         <!-- ======= Facts Section ======= -->
@@ -435,7 +439,7 @@
         <section id="clients">
             <div class="container" data-aos="zoom-in">
                 <header class="section-header">
-                    <h3>Our Clients</h3>
+                    <h3 id="ourClients">Our Clients</h3>
                 </header>
                 <div class="owl-carousel clients-carousel">
                     <img src="assets/img/clients/bamboo.png" alt="Bamboo Payment Systems">
@@ -456,8 +460,8 @@
         <section id="team">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
-                    <h3>Team</h3>
-                    <p>If you want to go fast, go alone. If you want to go far, go together.</p>
+                    <h3 id="teamTitle">Team</h3>
+                    <p id="teamDescription">If you want to go fast, go alone. If you want to go far, go together.</p>
                 </div>
                 <div class="row">
                     <div class="col-lg-2 col-md-6" style="border-radius: 50%;">
@@ -624,28 +628,28 @@
         <section id="contact" class="section-bg">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
-                    <h3>Contact Us</h3>
-                    <p>Need a hand? Let's talk!</p>
+                    <h3 id="contactUsTitle">Contact Us</h3>
+                    <p id="contactUsDescription">Need a hand? Let's talk!</p>
                 </div>
                 <div class="row contact-info">
                     <div class="col-md-4">
                         <div class="contact-address">
                             <i class="ion-ios-location-outline"></i>
-                            <h3>Address</h3>
+                            <h3 id="address">Address</h3>
                             <address>Gregorio Suárez 2753, Punta Carretas, Montevideo</address>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="contact-phone">
                             <i class="ion-ios-telephone-outline"></i>
-                            <h3>Phone Number</h3>
+                            <h3 id="phoneNumber">Phone Number</h3>
                             <p><a href="tel:+59897547108">+598 97 54 71 08</a></p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="contact-email">
                             <i class="ion-ios-email-outline"></i>
-                            <h3>Email</h3>
+                            <h3 id="email">Email</h3>
                             <p><a href="mailto:hello@booster.software">hello@booster.software</a></p>
                         </div>
                     </div>
@@ -689,28 +693,28 @@
 
                     <div class="col-lg-3 col-md-6 footer-info">
                         <img src="assets/img/logo-text.png" alt="Booster Software Logo" class="img-fluid">
-                        <p>
+                        <p id="footerLogoDescription">
                             Seamless collaboration, total transparency, secure delivery.<br>
                             We've developed a better approach to custom software development.
                         </p>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
+                        <h4 id="footerUsefulLinks">Useful Links</h4>
                         <ul>
-                            <li><i class="ion-ios-arrow-right"></i> <a href="index.html">Home</a></li>
-                            <li><i class="ion-ios-arrow-right"></i> <a href="#about">About us</a></li>
-                            <li><i class="ion-ios-arrow-right"></i> <a href="#services">Services</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="index.html" id="footerHome">Home</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#about" id="footerAboutUs">About us</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#services" id="footerServices">Services</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h4>Contact Us</h4>
+                        <h4 id="footerContactUs">Contact Us</h4>
                         <p>
                             <!-- San Antonio 296<br> -->
                             Montevideo, Uruguay<br>
-                            <strong>Phone:</strong> +598 97 547 108<br>
-                            <strong>Email:</strong> hello@booster.software<br>
+                            <strong id="footerPhone">Phone:</strong> +598 97 547 108<br>
+                            <strong id="footerEmail">Email:</strong> hello@booster.software<br>
                         </p>
 
                         <div class="social-links">
@@ -734,7 +738,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="copyright">
+            <div class="copyright" id="copyright">
                 Copyright &copy; 2023 Booster Software. All Rights Reserved.
             </div>
         </div>
