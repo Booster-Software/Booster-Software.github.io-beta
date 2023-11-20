@@ -293,6 +293,86 @@
   });
 })(jQuery);
 
+// Send CV
+function onSubmit(token) {
+  submitCV();
+}
+
+function submitCV() {
+  var name = $("#careersCVname").val();
+  var email = $("#careersCVemail").val();
+  var files = $("#careersCVfile").prop("files");
+
+  if (name && email && files.length > 0) {
+    var captcha = grecaptcha.getResponse();
+    resetSubmitResultMessage();
+    $("#careersSubmitSpinner").show();
+    sendCV(name, email, files, captcha);
+  }
+}
+
+function sendCV(name, email, files, captcha) {
+  var form = new FormData();
+  form.append("name", name);
+  form.append("email", email);
+  var blob = new Blob(files, { type: files[0].type });
+  var file = new File([blob], files[0].name);
+  form.append("file", file);
+  form.append("captcha", captcha);
+
+  fetch("/file-upload", {
+    method: "POST",
+    body: form,
+  })
+    .then((response) => {
+      showSubmitResult(response.status);
+    })
+    .catch((error) => {
+      showSubmitResult(400);
+    });
+
+  return response;
+}
+
+function showSubmitResult(result) {
+  $("#careersSubmitSpinner").hide();
+  var language = getLanguage();
+  if (result == 200) {
+    $("#careersSubmitCollapseAlert").addClass("alert-success");
+    $("#careersSubmitCollapseAlertHeader").html(
+      language.careersSubmitCollapseAlertHeaderOk
+    );
+    $("#careersSubmitCollapseAlertMainMessage").html(
+      language.careersSubmitCollapseAlertMainMessageOk
+    );
+  } else {
+    $("#careersSubmitCollapseAlert").addClass("alert-danger");
+    $("#careersSubmitCollapseAlertHeader").html(
+      language.careersSubmitCollapseAlertHeaderError
+    );
+    $("#careersSubmitCollapseAlertMainMessage").html(
+      language.careersSubmitCollapseAlertMainMessageError
+    );
+  }
+  $("#careersSubmitCollapseAlertFooterMessage").html(
+    language.careersSubmitCollapseAlertFooterMessage
+  );
+  $("#careersSubmitCollapse").collapse("show");
+}
+
+function resetSubmitResultMessage() {
+  $("#careersSubmitCollapse").collapse("hide");
+  $("#careersSubmitCollapseAlertHeader").html("");
+  $("#careersSubmitCollapseAlertMainMessage").html("");
+  $("#careersSubmitCollapseAlertFooterMessage").html("");
+  $("#careersSubmitCollapseAlert").removeClass();
+  $("#careersSubmitCollapseAlert").addClass("alert");
+}
+
+$(document).ready(function () {
+  $("#careersSubmitSpinner").hide();
+});
+
 // Languages
 function getLanguage() {
   let language;
@@ -331,10 +411,11 @@ function setInactiveFlag(lang) {
 }
 
 function translate() {
-  const language = getLanguage();
+  var language = getLanguage();
   $("#navMenuHome").html(language.home);
   $("#navMenuAboutUs").html(language.aboutUs);
   $("#navMenuServices").html(language.services);
+  $("#navMenuCareers").html(language.careers);
   $("#navMenuContactUs").html(language.contactUs);
   $("#homeHeader1Text1").html(language.homeHeader1Text1);
   $("#homeHeader1Text2").html(language.homeHeader1Text2);
@@ -376,6 +457,12 @@ function translate() {
   $("#servicesDescription4").html(language.servicesDescription4);
   $("#servicesTitle5").html(language.servicesTitle5);
   $("#servicesDescription5").html(language.servicesDescription5);
+  $("#careersTitle").html(language.careers);
+  $("#careersDescription").html(language.careersDescription);
+  $("#careersCVnameLabel").html(language.careersCVnameLabel);
+  $("#careersCVemailLabel").html(language.careersCVemailLabel);
+  $("#careersCVfileLabel").html(language.careersCVfileLabel);
+  $("#careersSubmitLabel").html(language.careersSubmitLabel);
   $("#letsWorkTogetherTitle").html(language.letsWorkTogetherTitle);
   $("#letsWorkTogetherDescription").html(language.letsWorkTogetherDescription);
   $("#letsWorkTogetherCTA").html(language.contactUs);

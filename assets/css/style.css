@@ -104,6 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .language-flag {
+  cursor: pointer;
   max-height: 18px;
   max-width: auto;
   filter: grayscale(75%);
@@ -811,6 +812,40 @@ section {
   margin-left: 60px;
   line-height: 24px;
   margin-bottom: 0;
+}
+
+/* Careers Section
+--------------------------------*/
+#careers {
+  background: #fff;
+  background-size: cover;
+  padding: 60px 0 60px 0;
+}
+
+#careers .container{
+  max-width: 500px;
+}
+
+#careers .form-group{
+  text-align: left;
+}
+
+#careers .btn-primary{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 32px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  color: #fff;
+  background: #18d26e;
+}
+
+.grecaptcha-badge{
+  display: inline-block;
 }
 
 /* Call To Action Section
