@@ -846,6 +846,7 @@ section {
 
 .grecaptcha-badge{
   display: inline-block;
+  visibility: hidden;
 }
 
 /* Call To Action Section
