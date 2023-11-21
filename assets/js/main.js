@@ -26,57 +26,47 @@
         scrollTop: 0,
       },
       1500,
-      "easeInOutExpo"
+      "easeInOutExpo",
     );
     return false;
   });
 
   // Smooth scroll for the navigation menu and links with .scrollto classes
   var scrolltoOffset = $("#header").outerHeight() - 17;
-  $(document).on(
-    "click",
-    ".nav-menu a, .mobile-nav a, .scrollto",
-    function (e) {
-      if (
-        location.pathname.replace(/^\//, "") ==
-          this.pathname.replace(/^\//, "") &&
-        location.hostname == this.hostname
-      ) {
-        var target = $(this.hash);
-        if (target.length) {
-          e.preventDefault();
+  $(document).on("click", ".nav-menu a, .mobile-nav a, .scrollto", function (e) {
+    if (location.pathname.replace(/^\//, "") == this.pathname.replace(/^\//, "") && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      if (target.length) {
+        e.preventDefault();
 
-          var scrollto = target.offset().top - scrolltoOffset;
+        var scrollto = target.offset().top - scrolltoOffset;
 
-          if ($(this).attr("href") == "#header") {
-            scrollto = 0;
-          }
-
-          $("html, body").animate(
-            {
-              scrollTop: scrollto,
-            },
-            1500,
-            "easeInOutExpo"
-          );
-
-          if ($(this).parents(".nav-menu, .mobile-nav").length) {
-            $(".nav-menu .active, .mobile-nav .active").removeClass("active");
-            $(this).closest("li").addClass("active");
-          }
-
-          if ($("body").hasClass("mobile-nav-active")) {
-            $("body").removeClass("mobile-nav-active");
-            $(".mobile-nav-toggle i").toggleClass(
-              "icofont-navigation-menu icofont-close"
-            );
-            $(".mobile-nav-overly").fadeOut();
-          }
-          return false;
+        if ($(this).attr("href") == "#header") {
+          scrollto = 0;
         }
+
+        $("html, body").animate(
+          {
+            scrollTop: scrollto,
+          },
+          1500,
+          "easeInOutExpo",
+        );
+
+        if ($(this).parents(".nav-menu, .mobile-nav").length) {
+          $(".nav-menu .active, .mobile-nav .active").removeClass("active");
+          $(this).closest("li").addClass("active");
+        }
+
+        if ($("body").hasClass("mobile-nav-active")) {
+          $("body").removeClass("mobile-nav-active");
+          $(".mobile-nav-toggle i").toggleClass("icofont-navigation-menu icofont-close");
+          $(".mobile-nav-overly").fadeOut();
+        }
+        return false;
       }
     }
-  );
+  });
 
   // Activate smooth scroll on page load with hash links in the url
   $(document).ready(function () {
@@ -89,7 +79,7 @@
             scrollTop: scrollto,
           },
           1500,
-          "easeInOutExpo"
+          "easeInOutExpo",
         );
       }
     }
@@ -101,16 +91,12 @@
       class: "mobile-nav d-lg-none",
     });
     $("body").append($mobile_nav);
-    $("body").prepend(
-      '<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>'
-    );
+    $("body").prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>');
     $("body").append('<div class="mobile-nav-overly"></div>');
 
     $(document).on("click", ".mobile-nav-toggle", function (e) {
       $("body").toggleClass("mobile-nav-active");
-      $(".mobile-nav-toggle i").toggleClass(
-        "icofont-navigation-menu icofont-close"
-      );
+      $(".mobile-nav-toggle i").toggleClass("icofont-navigation-menu icofont-close");
       $(".mobile-nav-overly").toggle();
     });
 
@@ -125,9 +111,7 @@
       if (!container.is(e.target) && container.has(e.target).length === 0) {
         if ($("body").hasClass("mobile-nav-active")) {
           $("body").removeClass("mobile-nav-active");
-          $(".mobile-nav-toggle i").toggleClass(
-            "icofont-navigation-menu icofont-close"
-          );
+          $(".mobile-nav-toggle i").toggleClass("icofont-navigation-menu icofont-close");
           $(".mobile-nav-overly").fadeOut();
         }
       }
@@ -183,23 +167,13 @@
     .children(".carousel-item")
     .each(function (index) {
       index === 0
-        ? introCarouselIndicators.append(
-            "<li data-target='#introCarousel' data-slide-to='" +
-              index +
-              "' class='active'></li>"
-          )
-        : introCarouselIndicators.append(
-            "<li data-target='#introCarousel' data-slide-to='" +
-              index +
-              "'></li>"
-          );
+        ? introCarouselIndicators.append("<li data-target='#introCarousel' data-slide-to='" + index + "' class='active'></li>")
+        : introCarouselIndicators.append("<li data-target='#introCarousel' data-slide-to='" + index + "'></li>");
     });
 
   introCarousel.on("slid.bs.carousel", function (e) {
     $(this).find("h2").addClass("animate__animated animate__fadeInDown");
-    $(this)
-      .find("p, .btn-get-started")
-      .addClass("animate__animated animate__fadeInUp");
+    $(this).find("p, .btn-get-started").addClass("animate__animated animate__fadeInUp");
   });
 
   // Skills section
@@ -211,7 +185,7 @@
     },
     {
       offset: "80%",
-    }
+    },
   );
 
   // jQuery counterUp (used in Facts section)
@@ -295,33 +269,24 @@
 
 // Send CV
 function onSubmit(token) {
-  submitCV();
+  var form = document.getElementById("careers-form");
+  if (form.checkValidity()) {
+    submitCV();
+  } else {
+    grecaptcha.reset();
+    form.reportValidity();
+  }
 }
 
 function submitCV() {
   var name = $("#careersCVname").val();
   var email = $("#careersCVemail").val();
   var files = $("#careersCVfile").prop("files");
+  var captcha = grecaptcha.getResponse();
 
-  if (checkSubmitCVrequiredFields()) {
-    var captcha = grecaptcha.getResponse();
-    resetSubmitResultMessage();
-    $("#careersSubmitSpinner").show();
-    sendCV(name, email, files, captcha);
-  }
-}
-
-function checkSubmitCVrequiredFields() {
-  var name = $("#careersCVname").val();
-  var email = $("#careersCVemail").val();
-  var files = $("#careersCVfile").prop("files");
-  if (name && emailIsValid(email) && files.length > 0) {
-    $("#careersSubmit").removeClass("disabled");
-    return true;
-  } else {
-    $("#careersSubmit").addClass("disabled");
-    return false;
-  }
+  resetSubmitResultMessage();
+  $("#careersSubmitSpinner").show();
+  sendCV(name, email, files, captcha);
 }
 
 function sendCV(name, email, files, captcha) {
@@ -349,31 +314,20 @@ function sendCV(name, email, files, captcha) {
 
 function showSubmitResult(result) {
   $("#careersSubmitSpinner").hide();
-  var language = getLanguage();
-  if (result == 200) {
-    $("#careersSubmitCollapseAlert").addClass("alert-success");
-    $("#careersSubmitCollapseAlertHeader").html(
-      language.careersSubmitCollapseAlertHeaderOk
-    );
-    $("#careersSubmitCollapseAlertMainMessage").html(
-      language.careersSubmitCollapseAlertMainMessageOk
-    );
-    $("#careersSubmitCollapseAlertFooterMessage").html(
-      language.careersSubmitCollapseAlertFooterMessageOk
-    );
-  } else {
-    $("#careersSubmitCollapseAlert").addClass("alert-danger");
-    $("#careersSubmitCollapseAlertHeader").html(
-      language.careersSubmitCollapseAlertHeaderError
-    );
-    $("#careersSubmitCollapseAlertMainMessage").html(
-      language.careersSubmitCollapseAlertMainMessageError
-    );
-    $("#careersSubmitCollapseAlertFooterMessage").html(
-      language.careersSubmitCollapseAlertFooterMessageError
-    );
-  }
-  $("#careersSubmitCollapse").collapse("show");
+  getTranslation(function (language) {
+    if (result == 200) {
+      $("#careersSubmitCollapseAlert").addClass("alert-success");
+      $("#careersSubmitCollapseAlertHeader").html(language.careersSubmitCollapseAlertHeaderOk);
+      $("#careersSubmitCollapseAlertMainMessage").html(language.careersSubmitCollapseAlertMainMessageOk);
+      $("#careersSubmitCollapseAlertFooterMessage").html(language.careersSubmitCollapseAlertFooterMessageOk);
+    } else {
+      $("#careersSubmitCollapseAlert").addClass("alert-danger");
+      $("#careersSubmitCollapseAlertHeader").html(language.careersSubmitCollapseAlertHeaderError);
+      $("#careersSubmitCollapseAlertMainMessage").html(language.careersSubmitCollapseAlertMainMessageError);
+      $("#careersSubmitCollapseAlertFooterMessage").html(language.careersSubmitCollapseAlertFooterMessageError);
+    }
+    $("#careersSubmitCollapse").collapse("show");
+  });
 }
 
 function resetSubmitResultMessage() {
@@ -385,222 +339,114 @@ function resetSubmitResultMessage() {
   $("#careersSubmitCollapseAlert").addClass("alert");
 }
 
-$("#careersCVname").on("input", function () {
-  checkSubmitCVrequiredFields();
-});
-$("#careersCVemail").on("input", function () {
-  checkSubmitCVrequiredFields();
-});
-$("#careersCVfile").on("input", function () {
-  checkSubmitCVrequiredFields();
-});
-
 $(document).ready(function () {
   $("#careersSubmitSpinner").hide();
 });
 
 // Languages
-function getLanguage() {
-  var language;
-  localStorage.getItem("language") == null ? setLanguage("en") : false;
-  language = getTranslation(localStorage.getItem("language"));
-  return language;
-}
+function getTranslation(cb) {
+  var lang = localStorage.getItem("language") || "en";
 
-function setLanguage(lang) {
-  setPreviousLanguage();
-  setInactiveFlag(localStorage.getItem("language"));
-  localStorage.setItem("language", lang);
-  setActiveFlag(localStorage.getItem("language"));
-  translate();
-}
-
-function getPreviousLanguage() {
-  return localStorage.getItem("previousLanguage");
-}
-
-function setPreviousLanguage() {
-  localStorage.getItem("language") == null
-    ? localStorage.setItem("language", "en")
-    : false;
-  localStorage.getItem("previousLanguage") == null
-    ? localStorage.setItem("previousLanguage", "en")
-    : false;
-  localStorage.setItem("previousLanguage", localStorage.getItem("language"));
-}
-
-function getTranslation(lang) {
-  var translation;
   $.ajax({
     url: "/assets/languages/" + lang + ".json",
     dataType: "json",
-    async: false,
-    dataType: "json",
     success: function (lang) {
-      translation = lang;
+      cb(lang);
     },
   });
-  return translation;
+}
+
+function setLanguage(newLang) {
+  var currentLang = localStorage.getItem("language");
+  localStorage.setItem("language", newLang);
+
+  setInactiveFlag(currentLang);
+  setActiveFlag(newLang);
+
+  translate();
 }
 
 function setActiveFlag(lang) {
-  lang == null ? (lang = "en") : false;
-  document
-    .getElementById("languageFlag" + lang.toUpperCase())
-    .classList.add("active-language-flag");
+  document.getElementById("languageFlag" + (lang || "en").toUpperCase()).classList.add("active-language-flag");
 }
 
 function setInactiveFlag(lang) {
-  lang == null ? (lang = "en") : false;
-  document
-    .getElementById("languageFlag" + lang.toUpperCase())
-    .classList.remove("active-language-flag");
+  document.getElementById("languageFlag" + (lang || "en").toUpperCase()).classList.remove("active-language-flag");
 }
 
 function translate() {
-  var language = getLanguage();
-  // Main page
-  $("#navMenuHome").html(language.home);
-  $("#navMenuAboutUs").html(language.aboutUs);
-  $("#navMenuServices").html(language.services);
-  $("#navMenuCareers").html(language.careers);
-  $("#navMenuContactUs").html(language.contactUs);
-  $("#homeHeader1Text1").html(language.homeHeader1Text1);
-  $("#homeHeader1Text2").html(language.homeHeader1Text2);
-  $("#homeButton1").html(language.homeButton1);
-  $("#homeHeader2Text1").html(language.homeHeader2Text1);
-  $("#homeHeader2Text2").html(language.homeHeader2Text2);
-  $("#homeButton2").html(language.homeButton2);
-  $("#homeCarouselPrevious").html(language.homeCarouselPrevious);
-  $("#homeCarouselNext").html(language.homeCarouselNext);
-  $("#featuredServicesTitle1").html(language.featuredServicesTitle1);
-  $("#featuredServicesDescription1").html(
-    language.featuredServicesDescription1
-  );
-  $("#featuredServicesTitle2").html(language.featuredServicesTitle2);
-  $("#featuredServicesDescription2").html(
-    language.featuredServicesDescription2
-  );
-  $("#featuredServicesTitle3").html(language.featuredServicesTitle3);
-  $("#featuredServicesDescription3").html(
-    language.featuredServicesDescription3
-  );
-  $("#aboutUsDescription").html(language.aboutUsDescription);
-  $("#aboutUsTitle").html(language.aboutUs);
-  $("#aboutUsTitle1").html(language.aboutUsTitle1);
-  $("#aboutUsDescription1").html(language.aboutUsDescription1);
-  $("#aboutUsTitle2").html(language.aboutUsTitle2);
-  $("#aboutUsDescription2").html(language.aboutUsDescription2);
-  $("#aboutUsTitle3").html(language.aboutUsTitle3);
-  $("#aboutUsDescription3").html(language.aboutUsDescription3);
-  $("#servicesTitle").html(language.services);
-  $("#servicesDescription").html(language.servicesDescription);
-  $("#servicesTitle1").html(language.servicesTitle1);
-  $("#servicesDescription1").html(language.servicesDescription1);
-  $("#servicesTitle2").html(language.servicesTitle2);
-  $("#servicesDescription2").html(language.servicesDescription2);
-  $("#servicesTitle3").html(language.servicesTitle3);
-  $("#servicesDescription3").html(language.servicesDescription3);
-  $("#servicesTitle4").html(language.servicesTitle4);
-  $("#servicesDescription4").html(language.servicesDescription4);
-  $("#servicesTitle5").html(language.servicesTitle5);
-  $("#servicesDescription5").html(language.servicesDescription5);
-  $("#letsWorkTogetherTitle").html(language.letsWorkTogetherTitle);
-  $("#letsWorkTogetherDescription").html(language.letsWorkTogetherDescription);
-  $("#letsWorkTogetherCTA").html(language.contactUs);
-  $("#ourClients").html(language.ourClients);
-  $("#teamTitle").html(language.teamTitle);
-  $("#teamDescription").html(language.teamDescription);
-  $("#contactUsTitle").html(language.contactUs);
-  $("#contactUsDescription").html(language.contactUsDescription);
-  $("#address").html(language.address);
-  $("#phoneNumber").html(language.phoneNumber);
-  $("#email").html(language.email);
-  $("#footerLogoDescription").html(language.footerLogoDescription);
-  $("#footerUsefulLinks").html(language.footerUsefulLinks);
-  $("#footerHome").html(language.home);
-  $("#footerAboutUs").html(language.aboutUs);
-  $("#footerServices").html(language.services);
-  $("#footerContactUs").html(language.contactUs);
-  $("#footerPhone").html(language.footerPhone);
-  $("#footerEmail").html(language.footerEmail);
-  $("#copyright").html(language.copyright);
-  // Careers
-  $("#careersTitle").html(language.careers);
-  $("#careersDescription").html(language.careersDescription);
-  $("#careersCVnameLabel").html(language.careersCVnameLabel);
-  $("#careersCVemailLabel").html(language.careersCVemailLabel);
-  $("#careersCVfileLabel").html(language.careersCVfileLabel);
-  $("#careersSubmitLabel").html(language.careersSubmitLabel);
-  translateDynamicElements(language);
-}
-
-function translateDynamicElements(newLanguage) {
-  var oldLanguage = getTranslation(getPreviousLanguage());
-  if (
-    extractTextFromHTML($("#careersSubmitCollapseAlertHeader").html()) ==
-    extractTextFromHTML(oldLanguage.careersSubmitCollapseAlertHeaderOk)
-  ) {
-    $("#careersSubmitCollapseAlertHeader").html(
-      newLanguage.careersSubmitCollapseAlertHeaderOk
-    );
-  }
-  if (
-    extractTextFromHTML($("#careersSubmitCollapseAlertHeader").html()) ==
-    extractTextFromHTML(oldLanguage.careersSubmitCollapseAlertHeaderError)
-  ) {
-    $("#careersSubmitCollapseAlertHeader").html(
-      newLanguage.careersSubmitCollapseAlertHeaderError
-    );
-  }
-  if (
-    extractTextFromHTML($("#careersSubmitCollapseAlertMainMessage").html()) ==
-    extractTextFromHTML(oldLanguage.careersSubmitCollapseAlertMainMessageOk)
-  ) {
-    $("#careersSubmitCollapseAlertMainMessage").html(
-      newLanguage.careersSubmitCollapseAlertMainMessageOk
-    );
-  }
-  if (
-    extractTextFromHTML($("#careersSubmitCollapseAlertMainMessage").html()) ==
-    extractTextFromHTML(oldLanguage.careersSubmitCollapseAlertMainMessageError)
-  ) {
-    $("#careersSubmitCollapseAlertMainMessage").html(
-      newLanguage.careersSubmitCollapseAlertMainMessageError
-    );
-  }
-  if (
-    extractTextFromHTML($("#careersSubmitCollapseAlertFooterMessage").html()) ==
-    extractTextFromHTML(oldLanguage.careersSubmitCollapseAlertFooterMessageOk)
-  ) {
-    $("#careersSubmitCollapseAlertFooterMessage").html(
-      newLanguage.careersSubmitCollapseAlertFooterMessageOk
-    );
-  }
-  if (
-    extractTextFromHTML($("#careersSubmitCollapseAlertFooterMessage").html()) ==
-    extractTextFromHTML(
-      oldLanguage.careersSubmitCollapseAlertFooterMessageError
-    )
-  ) {
-    $("#careersSubmitCollapseAlertFooterMessage").html(
-      newLanguage.careersSubmitCollapseAlertFooterMessageError
-    );
-  }
-}
-
-function extractTextFromHTML(html) {
-  return new DOMParser().parseFromString(html, "text/html").documentElement
-    .textContent;
+  getTranslation(function (language) {
+    // Main page
+    $("#navMenuHome").html(language.home);
+    $("#navMenuAboutUs").html(language.aboutUs);
+    $("#navMenuServices").html(language.services);
+    $("#navMenuCareers").html(language.careers);
+    $("#navMenuContactUs").html(language.contactUs);
+    $("#homeHeader1Text1").html(language.homeHeader1Text1);
+    $("#homeHeader1Text2").html(language.homeHeader1Text2);
+    $("#homeButton1").html(language.homeButton1);
+    $("#homeHeader2Text1").html(language.homeHeader2Text1);
+    $("#homeHeader2Text2").html(language.homeHeader2Text2);
+    $("#homeButton2").html(language.homeButton2);
+    $("#homeCarouselPrevious").html(language.homeCarouselPrevious);
+    $("#homeCarouselNext").html(language.homeCarouselNext);
+    $("#featuredServicesTitle1").html(language.featuredServicesTitle1);
+    $("#featuredServicesDescription1").html(language.featuredServicesDescription1);
+    $("#featuredServicesTitle2").html(language.featuredServicesTitle2);
+    $("#featuredServicesDescription2").html(language.featuredServicesDescription2);
+    $("#featuredServicesTitle3").html(language.featuredServicesTitle3);
+    $("#featuredServicesDescription3").html(language.featuredServicesDescription3);
+    $("#aboutUsDescription").html(language.aboutUsDescription);
+    $("#aboutUsTitle").html(language.aboutUs);
+    $("#aboutUsTitle1").html(language.aboutUsTitle1);
+    $("#aboutUsDescription1").html(language.aboutUsDescription1);
+    $("#aboutUsTitle2").html(language.aboutUsTitle2);
+    $("#aboutUsDescription2").html(language.aboutUsDescription2);
+    $("#aboutUsTitle3").html(language.aboutUsTitle3);
+    $("#aboutUsDescription3").html(language.aboutUsDescription3);
+    $("#servicesTitle").html(language.services);
+    $("#servicesDescription").html(language.servicesDescription);
+    $("#servicesTitle1").html(language.servicesTitle1);
+    $("#servicesDescription1").html(language.servicesDescription1);
+    $("#servicesTitle2").html(language.servicesTitle2);
+    $("#servicesDescription2").html(language.servicesDescription2);
+    $("#servicesTitle3").html(language.servicesTitle3);
+    $("#servicesDescription3").html(language.servicesDescription3);
+    $("#servicesTitle4").html(language.servicesTitle4);
+    $("#servicesDescription4").html(language.servicesDescription4);
+    $("#servicesTitle5").html(language.servicesTitle5);
+    $("#servicesDescription5").html(language.servicesDescription5);
+    $("#letsWorkTogetherTitle").html(language.letsWorkTogetherTitle);
+    $("#letsWorkTogetherDescription").html(language.letsWorkTogetherDescription);
+    $("#letsWorkTogetherCTA").html(language.contactUs);
+    $("#ourClients").html(language.ourClients);
+    $("#teamTitle").html(language.teamTitle);
+    $("#teamDescription").html(language.teamDescription);
+    $("#contactUsTitle").html(language.contactUs);
+    $("#contactUsDescription").html(language.contactUsDescription);
+    $("#address").html(language.address);
+    $("#phoneNumber").html(language.phoneNumber);
+    $("#email").html(language.email);
+    $("#footerLogoDescription").html(language.footerLogoDescription);
+    $("#footerUsefulLinks").html(language.footerUsefulLinks);
+    $("#footerHome").html(language.home);
+    $("#footerAboutUs").html(language.aboutUs);
+    $("#footerServices").html(language.services);
+    $("#footerContactUs").html(language.contactUs);
+    $("#footerPhone").html(language.footerPhone);
+    $("#footerEmail").html(language.footerEmail);
+    $("#copyright").html(language.copyright);
+    // Careers
+    $("#careersTitle").html(language.careers);
+    $("#careersDescription").html(language.careersDescription);
+    $("#careersCVnameLabel").html(language.careersCVnameLabel);
+    $("#careersCVemailLabel").html(language.careersCVemailLabel);
+    $("#careersCVfileLabel").html(language.careersCVfileLabel);
+    $("#careersSubmitLabel").html(language.careersSubmitLabel);
+  });
 }
 
 $(document).ready(function () {
   translate();
   setActiveFlag(localStorage.getItem("language"));
 });
-
-//Validations
-function emailIsValid(email) {
-  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-  return regex.test(email);
-}

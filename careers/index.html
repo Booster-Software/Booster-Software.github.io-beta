@@ -101,7 +101,7 @@
                 <p id="careersDescription">Join the team! Send us your CV.</p>
             </header>
             <div class="container text-center">
-                <form>
+                <form id="careers-form">
                     <div class="form-group">
                         <label for="careersCVname" id="careersCVnameLabel">Full name</label>
                         <input type="text" class="form-control" id="careersCVname" placeholder="George Stephenson" required>
@@ -114,15 +114,15 @@
                         <label for="careersCVfile" id="careersCVfileLabel">Your CV in PDF format</label>
                         <input type="file" accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" class="form-control-file" id="careersCVfile" required>
                         </div>
-                        <button type="submit" class="btn btn-primary g-recaptcha disabled" data-sitekey="6LdrsBEpAAAAAFnpt0pnmbUHXOk8tYBW_jbGhe5j" data-callback="onSubmit" data-action="careersApply" id="careersSubmit">
+                        <button type="submit" class="btn btn-primary g-recaptcha" data-sitekey="6LdrsBEpAAAAAFnpt0pnmbUHXOk8tYBW_jbGhe5j" data-callback="onSubmit" data-action="careersApply" id="careersSubmit">
                             <span role="status" id="careersSubmitLabel">Submit</span>
                             <span class="spinner-border spinner-border-sm" id="careersSubmitSpinner"></span>
                         </button>    
                         <div class="collapse" id="careersSubmitCollapse">
                             <div class="alert" id="careersSubmitCollapseAlert" role="alert">
-                                <h4 class="alert-heading" id="careersSubmitCollapseAlertHeader">Response header</h4>
-                                <p id="careersSubmitCollapseAlertMainMessage">Response message.</p>
-                                <p class="mb-0" id="careersSubmitCollapseAlertFooterMessage">Response footer.</p>
+                                <h4 class="alert-heading" id="careersSubmitCollapseAlertHeader"></h4>
+                                <p id="careersSubmitCollapseAlertMainMessage"></p>
+                                <p class="mb-0" id="careersSubmitCollapseAlertFooterMessage"></p>
                             </div>
                         </div>
                     </div>

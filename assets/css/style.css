@@ -677,7 +677,7 @@ section {
 /* About Us Section
 --------------------------------*/
 #about {
-  background: url(/assets/img/about-bg.jpg) center top no-repeat fixed;
+  /* background: url(/assets/img/about-bg.jpg) center top no-repeat fixed; */
   background-size: cover;
   padding: 60px 0 40px 0;
   position: relative;
@@ -822,15 +822,15 @@ section {
   padding: 60px 0 60px 0;
 }
 
-#careers .container{
+#careers .container {
   max-width: 500px;
 }
 
-#careers .form-group{
+#careers .form-group {
   text-align: left;
 }
 
-#careers .btn-primary{
+#careers .btn-primary {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -844,9 +844,9 @@ section {
   background: #18d26e;
 }
 
-.grecaptcha-badge{
+.grecaptcha-badge {
   display: inline-block;
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 /* Call To Action Section
