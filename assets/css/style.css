@@ -121,23 +121,24 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-#header {
+.header {
   transition: all 0.5s;
   z-index: 997;
   padding: 26px 0;
   background: rgba(0, 0, 0, 0.9);
 }
 
-#header.header-transparent {
+
+.header-transparent {
   background: transparent;
 }
 
-#header.header-scrolled {
+.header-scrolled {
   background: rgba(0, 0, 0, 0.9);
   padding: 18px 0;
 }
 
-#header .logo {
+.header .logo {
   font-size: 34px;
   margin: 0;
   padding: 0;
@@ -149,16 +150,16 @@ h1, h2, h3, h4, h5, h6 {
   border-left: 4px solid #18d26e;
 }
 
-#header .logo a {
+.header .logo a {
   color: #fff;
 }
 
-#header .logo img {
+.header .logo img {
   max-height: 80px;
 }
 
 @media (max-width: 992px) {
-  #header .logo {
+  .header .logo {
     font-size: 28px;
   }
 }
@@ -819,7 +820,7 @@ section {
 #careers {
   background: #fff;
   background-size: cover;
-  padding: 60px 0 60px 0;
+  padding: 160px 0 60px 0;
 }
 
 #careers .container {
@@ -1701,4 +1702,391 @@ section {
   text-align: center;
   font-size: 13px;
   color: #ddd;
+}
+
+/*--------------------------------------------------------------
+# Booster Factory
+--------------------------------------------------------------*/
+
+/* Main title Section
+--------------------------------*/
+#factoryMainTitle {
+  padding-top: 100px;
+  position: relative;
+  color: #DBDBDB;
+}
+
+#factoryMainTitle .card {
+  padding: 60px 10px 40px 10px;
+  background: black;
+  background-size: cover;
+}
+
+#factoryMainTitle .promo {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin: 5px 15px;
+  padding: 15px;
+}
+
+#factoryMainTitle .promo i {
+  padding-right: 5px;
+  color: #18d26e;
+}
+
+@media (max-width: 767px) {
+  #factoryMainTitle .promo {
+    width: 275px;
+  }
+}
+
+/* Perks Section
+--------------------------------*/
+#factoryCustomSoftware {
+  background-size: cover;
+  padding: 60px 0 40px 0;
+  position: relative;
+}
+
+#factoryCustomSoftware::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.92);
+  z-index: 9;
+}
+
+#factoryCustomSoftware .container {
+  position: relative;
+  z-index: 10;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col {
+  background: #fff;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col .title {
+  padding: 0px 20px;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col .img {
+  position: relative;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col .img img {
+  border-radius: 4px 4px 0 0;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col .icon {
+  width: 64px;
+  height: 64px;
+  padding-top: 8px;
+  text-align: center;
+  position: absolute;
+  background-color: #18d26e;
+  border-radius: 50%;
+  text-align: center;
+  border: 4px solid #fff;
+  left: calc( 50% - 32px);
+  bottom: -30px;
+  transition: 0.3s;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col i {
+  font-size: 36px;
+  line-height: 1;
+  color: #fff;
+  transition: 0.3s;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col:hover .icon {
+  background-color: #fff;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col:hover i {
+  color: #18d26e;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col h2 {
+  color: #000;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 0;
+  margin: 40px 0 12px 0;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col h2 a {
+  color: #000;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col h2 a:hover {
+  color: #18d26e;
+}
+
+#factoryCustomSoftware .factoryCustomSoftware-col p {
+  font-size: 14px;
+  line-height: 24px;
+  color: #333;
+  margin-bottom: 0;
+  padding: 0 20px 20px 20px;
+}
+
+/* e-Commerce Section
+--------------------------------*/
+#ecommerce {
+  background: url(/assets/img/factory-ecommerce/ecommerce-bg.jpg) center top no-repeat fixed;
+  background-size: cover;
+  padding: 60px 0 0 0;
+  position: relative;
+  margin-bottom: 150px;
+}
+
+#ecommerce::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.88);
+  z-index: 9;
+}
+
+#ecommerce .container {
+  position: relative;
+  z-index: 10;
+}
+
+#ecommerce .facts-img {
+  text-align: center;
+  padding-top: 30px;
+}
+
+
+/* e-Commerce Media Section
+--------------------------------*/
+
+#ecommerceMedia {
+  padding: 1;
+  background: linear-gradient(141deg, white 15%, #18d26e 50%, white 85%);
+}
+
+#ecommerceMedia .media {
+  align-items: center;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  text-align: left;
+  height: 100vh;
+  position: sticky;
+  width: 100%;
+  max-height: 100%;
+}
+
+#ecommerceMedia img {
+  max-width: 100%;
+  max-height: 75vh;
+  padding: 15px;
+}
+
+#ecommerceMedia .media-img {
+  text-align:center;
+  max-width: 35%;
+}
+
+#ecommerceMedia .media-container {
+  text-align: center;
+  margin: auto;
+}
+
+#ecommerceMedia h2 {
+  font-size: 60px;
+}
+
+#ecommerceMedia p {
+  font-size: 25px;
+}
+
+@media (max-width: 767px) {
+  #ecommerceMedia .media {
+    height: 1000px;
+    margin-bottom: 15vh;
+  }
+
+  #ecommerceMedia h2 {
+    font-size: 45px;
+  }
+  
+  #ecommerceMedia p {
+    font-size: 25px;
+  }
+
+  #ecommerceMedia .media-container {
+    max-width: 100%;
+  }
+
+  #ecommerceMedia img {
+    height: 250px;
+  }
+
+  #ecommerceMedia .media-img {
+    max-width: 100%;
+  }
+}
+
+@media (max-height: 757px) {
+  #ecommerceMedia .media {
+    height: 100%;
+    margin: 10px;
+  }
+
+  #ecommerceMedia .row {
+    margin-top: 100px;
+  }
+}
+
+@media (max-height: 1139px) {
+  #ecommerceMedia .media-container {
+    width: 100%;
+  }
+
+  #ecommerceMedia img {
+    max-width: 100%;
+    padding: 15px;
+  }
+}
+
+@media (min-width: 1140px) {
+  #ecommerceMedia .media-container {
+    width: 65%;
+  }
+}
+
+/* Contact Us Section
+--------------------------------*/
+#factory-cta #call-to-action {
+  background: linear-gradient(rgb(255, 255, 255, 0.1), rgba(0, 0, 0, 0.7)), url(/assets/img/factory-cta/factory-railway.jpg) fixed center center;
+  background-size: cover;
+  padding: 60px 0;
+}
+
+/*--------------------------------------------------------------
+# Fancy cubes background
+--------------------------------------------------------------*/
+
+.cubes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cubes li{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+
+}
+
+.cubes li:nth-child(1){
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+
+.cubes li:nth-child(2){
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.cubes li:nth-child(3){
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.cubes li:nth-child(4){
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.cubes li:nth-child(5){
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.cubes li:nth-child(6){
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.cubes li:nth-child(7){
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.cubes li:nth-child(8){
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.cubes li:nth-child(9){
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.cubes li:nth-child(10){
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+@keyframes animate {
+  0%{
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 0;
+  }
+  100%{
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+  }
 }
