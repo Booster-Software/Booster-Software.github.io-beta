@@ -229,6 +229,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 13px;
   text-transform: none;
   color: #333333;
+  text-transform: uppercase;
 }
 
 .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
@@ -798,6 +799,7 @@ section {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
+  text-transform: uppercase;
 }
 
 #services .title a {
