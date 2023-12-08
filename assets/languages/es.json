@@ -44,6 +44,7 @@
     "careersCVnameLabel": "Nombre y apellido",
     "careersCVemailLabel": "Email",
     "careersCVfileLabel": "Tu CV",
+    "careersCVfileDescription": "Selecciona un archivo",
     "careersSubmitLabel": "Enviar",
     "careersSubmitCollapseAlertHeaderOk": "¡Recibido!",
     "careersSubmitCollapseAlertHeaderError": "¡Oh no!",

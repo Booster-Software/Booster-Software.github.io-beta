@@ -115,20 +115,23 @@
                     <div class="form-group">
                         <label for="careersCVfile" id="careersCVfileLabel">Your CV in PDF format</label>
                         <input type="file" accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" class="form-control-file" id="careersCVfile" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary g-recaptcha" data-sitekey="6LdrsBEpAAAAAFnpt0pnmbUHXOk8tYBW_jbGhe5j" data-callback="onSubmit" data-action="careersApply" id="careersSubmit">
-                            <span role="status" id="careersSubmitLabel">Submit</span>
-                            <span class="spinner-border spinner-border-sm" id="careersSubmitSpinner"></span>
-                        </button>    
-                        <div class="collapse" id="careersSubmitCollapse">
-                            <div class="alert" id="careersSubmitCollapseAlert" role="alert">
-                                <h4 class="alert-heading" id="careersSubmitCollapseAlertHeader"></h4>
-                                <p id="careersSubmitCollapseAlertMainMessage"></p>
-                                <p class="mb-0" id="careersSubmitCollapseAlertFooterMessage"></p>
-                            </div>
+                        <div>
+                            <input type="button" class="btn btn-outline-primary" id="careersCVfileButton" value="Browse" required />
+                            <span id="careersCVfileDescription">Select a file</span>
                         </div>
                     </div>
-                </form>                                       
+                    <button type="submit" class="btn btn-primary g-recaptcha" data-sitekey="6LdrsBEpAAAAAFnpt0pnmbUHXOk8tYBW_jbGhe5j" data-callback="onSubmit" data-action="careersApply" id="careersSubmit">
+                        <span role="status" id="careersSubmitLabel">Submit</span>
+                        <span class="spinner-border spinner-border-sm" id="careersSubmitSpinner"></span>
+                    </button>    
+                    <div class="collapse" id="careersSubmitCollapse">
+                        <div class="alert" id="careersSubmitCollapseAlert" role="alert">
+                            <h4 class="alert-heading" id="careersSubmitCollapseAlertHeader"></h4>
+                            <p id="careersSubmitCollapseAlertMainMessage"></p>
+                            <p class="mb-0" id="careersSubmitCollapseAlertFooterMessage"></p>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section><!-- End Careers Section -->

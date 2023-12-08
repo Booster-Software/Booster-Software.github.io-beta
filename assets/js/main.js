@@ -393,6 +393,14 @@ function resetSubmitResultMessage() {
   $("#careersSubmitCollapseAlert").addClass("alert");
 }
 
+$("#careersCVfileButton").click(function () {
+  $("#careersCVfile").trigger("click");
+});
+
+$("#careersCVfile").change(function () {
+  $("#careersCVfileDescription").text($("#careersCVfile").get(0).files.item(0).name);
+});
+
 $(document).ready(function () {
   $("#careersSubmitSpinner").hide();
 });
@@ -572,6 +580,7 @@ function translate() {
     $("#careersDescription").html(language.careersDescription);
     $("#careersCVnameLabel").html(language.careersCVnameLabel);
     $("#careersCVemailLabel").html(language.careersCVemailLabel);
+    $("#careersCVfileDescription").html(language.careersCVfileDescription);
     $("#careersCVfileLabel").html(language.careersCVfileLabel);
     $("#careersSubmitLabel").html(language.careersSubmitLabel);
     // Mobile menu (careers)
